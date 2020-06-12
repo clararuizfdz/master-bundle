@@ -1,0 +1,22 @@
+$main-color:#49852e;
+$body-color:#d6ecd2;
+
+body{
+    background-color: $body-color;
+}
+
+.main{
+    background-color: $main-color;
+    height: 25vh;
+    width: auto;   
+    padding: 1rem; 
+    span{
+        font-size: 2rem;
+        text-align: center;
+        padding: 1rem;
+        color: #daf563;
+    }
+}
+.logo{
+    width: 100px;
+}
