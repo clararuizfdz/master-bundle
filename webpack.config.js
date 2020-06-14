@@ -6,10 +6,10 @@ const basePath = __dirname;
 module.exports = {
     context: path.join(basePath, "src"),
     resolve:{
-        extensions: ['.js', '.ts'],
+        extensions: ['.js', '.ts', '.tsx'],
     },
     entry: {
-        app: "./index.ts",
+        app: "./index.tsx",
         appStyles: ["./mystyles.scss"],
     },
     stats: "errors-only",
@@ -56,7 +56,8 @@ module.exports = {
                     loader: 'url-loader',
                     options:{
                         limit: 5000,
-                        name: './img/[hash].[name].[ext]'
+                        name: './img/[hash].[name].[ext]',
+                        esModule: false,
                     }
                 }
             },
