@@ -5,8 +5,11 @@ const basePath = __dirname;
 
 module.exports = {
     context: path.join(basePath, "src"),
+    resolve:{
+        extensions: ['.js', '.ts'],
+    },
     entry: {
-        app: "./index.js",
+        app: "./index.ts",
         appStyles: ["./mystyles.scss"],
     },
     stats: "errors-only",
@@ -17,39 +20,50 @@ module.exports = {
         filename: "[name].[chunkhash].js"
     },
     module: {
-        rules: [{
-            test: /\.js$/,
+        rules: [
+            {
+                test: /\.(ts|tsx)$/,
+                 exclude: /node_modules/,
+                loader: 'awesome-typescript-loader',
+                options: {
+                    useBabel: true,
+                    "babelCore": "@babel/core", 
+                },
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+            },
+            {
+            test:/\.scss$/,
             exclude: /node_modules/,
-            loader: 'babel-loader',
-        },
-        {
-           test:/\.scss$/,
-           exclude: /node_modules/,
-           use: [
-               MiniCssExtractPlugin.loader,
-               "css-loader",
-               {
-                   loader:"sass-loader",
-                   options:{
-                       implementation: require("sass")
-                   }
-               }
-           ] 
-        },
-        {
-            test:/\.(png|jpg)$/,
-            exclude: /node_modules/,
-            use:{
-                loader: 'url-loader',
-                options:{
-                    limit: 5000
+            use: [
+                MiniCssExtractPlugin.loader,
+                "css-loader",
+                {
+                    loader:"sass-loader",
+                    options:{
+                        implementation: require("sass")
+                    }
                 }
+            ] 
+            },
+            {
+                test:/\.(png|jpg)$/,
+                exclude: /node_modules/,
+                use:{
+                    loader: 'url-loader',
+                    options:{
+                        limit: 5000,
+                        name: './img/[hash].[name].[ext]'
+                    }
+                }
+            },
+            {
+                test: /\.html$/,
+                loader: 'html-loader'
             }
-        },
-        {
-            test: /\.html$/,
-            loader: 'html-loader'
-        }
     ]
     },
     plugins:[
@@ -61,5 +75,6 @@ module.exports = {
             filename:"[name].css",
             chunkFilename:"[id].css"
         })
-    ]
+    ],
+    devtool: 'inline-source-map',
 }
