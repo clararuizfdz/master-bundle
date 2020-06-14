@@ -1,5 +1,5 @@
 import React from "react";
-const logo = require('./content/logo_1.png');
+const logo = require('./content/source.gif');
 
 export const Header: React.FC = () => {
   return (

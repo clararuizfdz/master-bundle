@@ -1,5 +1,6 @@
-$main-color:#49852e;
-$body-color:#d6ecd2;
+$main-color:#21315A;
+$body-color:#CCD5EC;
+$font-color: #94CE5A;
 
 body{
     background-color: $body-color;
@@ -10,13 +11,15 @@ body{
     height: 25vh;
     width: auto;   
     padding: 1rem; 
+    display:flex;
+    align-items: center;
     span{
         font-size: 2rem;
         text-align: center;
         padding: 1rem;
-        color: #daf563;
+        color: $font-color;
     }
 }
 .logo{
-    width: 100px;
+    width: 150px;
 }
