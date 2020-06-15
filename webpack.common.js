@@ -40,7 +40,15 @@ module.exports = {
             exclude: /node_modules/,
             use: [
                 MiniCssExtractPlugin.loader,
-                "css-loader",
+                {
+                    loader:"css-loader",
+                    options:{
+                        modules:{
+                            localIdentName:"[name]__[local]_[hash:base64:5]",
+                        },
+                        localsConvention: "camelCase",
+                    }
+                },
                 {
                     loader:"sass-loader",
                     options:{
