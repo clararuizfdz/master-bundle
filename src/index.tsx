@@ -1,5 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {Header} from "./header";
+import {Layout} from "./layout";
 
-ReactDOM.render(<Header />, document.getElementById("root"));
+ReactDOM.render(<Layout />, document.getElementById("root"));
