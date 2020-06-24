@@ -10,7 +10,7 @@ module.exports = {
     },
     entry: {
         app: "./index.tsx",
-        appStyles: ["./mystyles.scss"],
+        appStyles: ["./layoutStyles.scss"],
     },
     stats: "errors-only",
     devServer: {
